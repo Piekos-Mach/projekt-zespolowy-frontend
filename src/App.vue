@@ -1,60 +1,53 @@
 <template>
   <v-app>
+    <Menu/>
     <v-app-bar
       app
       color="primary"
-      dark
+      dark 
+      clipped-left
     >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
+      <router-link to="/">
+        <v-btn text>
+          <span class="mr-2">Home</span>
+        </v-btn>
+      </router-link>
 
       <v-spacer></v-spacer>
 
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+      <router-link to="login">
+        <v-btn text>
+          <span class="mr-2">Login</span>
+        </v-btn>
+      </router-link>
     </v-app-bar>
 
+
     <v-main>
-      <HelloWorld/>
+        <v-content >
+          <v-container>
+        <router-view></router-view>
+          </v-container>
+        </v-content>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
-
+import Menu from './components/Menu'
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
+    Menu
   },
 
   data: () => ({
     //
   }),
+
+  created() {
+    
+  }
 };
 </script>

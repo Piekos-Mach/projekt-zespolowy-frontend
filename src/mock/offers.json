@@ -1,0 +1,342 @@
+[
+    {
+        "id": 1,
+        "owner": {
+            "id": 1,
+            "name": "a",
+            "type": "ADMIN",
+            "mail": "a@mail.com"
+        },
+        "title": "Przedmiot nr 1",
+        "text": "Pellentesque diam volutpat commodo sed egestas. Lacus vestibulum sed arcu non odio euismod lacinia. Ancidunt id aliquet risus.",
+        "price": {
+            "value": 1,
+            "currency": "PLN"
+        },
+        "images": [1,2,6],
+        "creationDate": "2020-05-01T12:30:00"
+    },
+    {
+        "id": 2,
+        "owner": {
+            "id": 1,
+            "name": "a",
+            "type": "ADMIN",
+            "mail": "a@mail.com"
+        },
+        "title": "Przedmiot nr 2",
+        "text": "Pellentesque diam volutpat commodo sed egestas. Lacus vestibulum sed arcu non odio euismod lacinia. Ancidunt id aliquet risus.",
+        "price": {
+            "value": 2,
+            "currency": "PLN"
+        },
+        "images": [2,3,4],
+        "creationDate": "2020-05-01T12:30:00"
+    },
+    {
+        "id": 3,
+        "owner": {
+            "id": 1,
+            "name": "a",
+            "type": "ADMIN",
+            "mail": "a@mail.com"
+        },
+        "title": "Przedmiot nr 3",
+        "text": "Pellentesque diam volutpat commodo sed egestas. Lacus vestibulum sed arcu non odio euismod lacinia. Ancidunt id aliquet risus.",
+        "price": {
+            "value": 3,
+            "currency": "PLN"
+        },
+        "images": [3,1,5],
+        "creationDate": "2020-05-01T12:30:00"
+    },
+    {
+        "id": 4,
+        "owner": {
+            "id": 1,
+            "name": "a",
+            "type": "ADMIN",
+            "mail": "a@mail.com"
+        },
+        "title": "Przedmiot nr 4",
+        "text": "Pellentesque diam volutpat commodo sed egestas. Lacus vestibulum sed arcu non odio euismod lacinia. Ancidunt id aliquet risus.",
+        "price": {
+            "value": 4,
+            "currency": "PLN"
+        },
+        "images": [4,2,8],
+        "creationDate": "2020-05-01T12:30:00"
+    },
+    {
+        "id": 5,
+        "owner": {
+            "id": 1,
+            "name": "a",
+            "type": "ADMIN",
+            "mail": "a@mail.com"
+        },
+        "title": "Przedmiot nr 5",
+        "text": "Pellentesque diam volutpat commodo sed egestas. Lacus vestibulum sed arcu non odio euismod lacinia. Ancidunt id aliquet risus.",
+        "price": {
+            "value": 5,
+            "currency": "PLN"
+        },
+        "images": [5,3,7],
+        "creationDate": "2020-05-01T12:30:00"
+    },
+    {
+        "id": 6,
+        "owner": {
+            "id": 1,
+            "name": "a",
+            "type": "ADMIN",
+            "mail": "a@mail.com"
+        },
+        "title": "Przedmiot nr 6",
+        "text": "Pellentesque diam volutpat commodo sed egestas. Lacus vestibulum sed arcu non odio euismod lacinia. Ancidunt id aliquet risus.",
+        "price": {
+            "value": 6,
+            "currency": "PLN"
+        },
+        "images": [6,4,2],
+        "creationDate": "2020-05-01T12:30:00"
+    },
+    {
+        "id": 7,
+        "owner": {
+            "id": 2,
+            "name": "user",
+            "type": "CUSTOMER",
+            "mail": "user@mail.com"
+        },
+        "title": "Przedmiot nr 7",
+        "text": "Pellentesque diam volutpat commodo sed egestas. Lacus vestibulum sed arcu non odio euismod lacinia. Ancidunt id aliquet risus.",
+        "price": {
+            "value": 7,
+            "currency": "PLN"
+        },
+        "images": [1,2,5],
+        "creationDate": "2020-05-01T12:30:00"
+    },
+    {
+        "id": 8,
+        "owner": {
+            "id": 2,
+            "name": "user",
+            "type": "CUSTOMER",
+            "mail": "user@mail.com"
+        },
+        "title": "Przedmiot nr 8",
+        "text": "Pellentesque diam volutpat commodo sed egestas. Lacus vestibulum sed arcu non odio euismod lacinia. Ancidunt id aliquet risus.",
+        "price": {
+            "value": 8,
+            "currency": "PLN"
+        },
+        "images": [2,1,6],
+        "creationDate": "2020-05-01T12:30:00"
+    },
+    {
+        "id": 9,
+        "owner": {
+            "id": 2,
+            "name": "user",
+            "type": "CUSTOMER",
+            "mail": "user@mail.com"
+        },
+        "title": "Przedmiot nr 9",
+        "text": "Pellentesque diam volutpat commodo sed egestas. Lacus vestibulum sed arcu non odio euismod lacinia. Ancidunt id aliquet risus.",
+        "price": {
+            "value": 9,
+            "currency": "PLN"
+        },
+        "images": [3,5,1],
+        "creationDate": "2020-05-01T12:30:00"
+    },
+    {
+        "id": 10,
+        "owner": {
+            "id": 3,
+            "name": "user1",
+            "type": "CUSTOMER",
+            "mail": "user1@mail.com"
+        },
+        "title": "Przedmiot nr 10",
+        "text": "Pellentesque diam volutpat commodo sed egestas. Lacus vestibulum sed arcu non odio euismod lacinia. Ancidunt id aliquet risus.",
+        "price": {
+            "value": 10,
+            "currency": "PLN"
+        },
+        "images": [1,2,5],
+        "creationDate": "2020-05-01T12:30:00"
+    },
+    {
+        "id": 12,
+        "owner": {
+            "id": 3,
+            "name": "user1",
+            "type": "CUSTOMER",
+            "mail": "user1@mail.com"
+        },
+        "title": "Przedmiot nr 12",
+        "text": "Pellentesque diam volutpat commodo sed egestas. Lacus vestibulum sed arcu non odio euismod lacinia. Ancidunt id aliquet risus.",
+        "price": {
+            "value": 12,
+            "currency": "PLN"
+        },
+        "images": [6,3,5],
+        "creationDate": "2020-05-01T12:30:00"
+    },
+    {
+        "id": 13,
+        "owner": {
+            "id": 3,
+            "name": "user1",
+            "type": "CUSTOMER",
+            "mail": "user1@mail.com"
+        },
+        "title": "Przedmiot nr 13",
+        "text": "Pellentesque diam volutpat commodo sed egestas. Lacus vestibulum sed arcu non odio euismod lacinia. Ancidunt id aliquet risus.",
+        "price": {
+            "value": 13,
+            "currency": "PLN"
+        },
+        "images": [7,5,3],
+        "creationDate": "2020-05-01T12:30:00"
+    },
+    {
+        "id": 14,
+        "owner": {
+            "id": 3,
+            "name": "user1",
+            "type": "CUSTOMER",
+            "mail": "user1@mail.com"
+        },
+        "title": "Przedmiot nr 14",
+        "text": "Pellentesque diam volutpat commodo sed egestas. Lacus vestibulum sed arcu non odio euismod lacinia. Ancidunt id aliquet risus.",
+        "price": {
+            "value": 14,
+            "currency": "PLN"
+        },
+        "images": [8,2,6],
+        "creationDate": "2020-05-01T12:30:00"
+    },
+    {
+        "id": 15,
+        "owner": {
+            "id": 3,
+            "name": "user1",
+            "type": "CUSTOMER",
+            "mail": "user1@mail.com"
+        },
+        "title": "Przedmiot nr 15",
+        "text": "Pellentesque diam volutpat commodo sed egestas. Lacus vestibulum sed arcu non odio euismod lacinia. Ancidunt id aliquet risus.",
+        "price": {
+            "value": 15,
+            "currency": "PLN"
+        },
+        "images": [5,3,1],
+        "creationDate": "2020-05-01T12:30:00"
+    },
+    {
+        "id": 11,
+        "owner": {
+            "id": 3,
+            "name": "user1",
+            "type": "CUSTOMER",
+            "mail": "user1@mail.com"
+        },
+        "title": "Przedmiot nr 11",
+        "text": "Pellentesque diam volutpat commodo sed egestas. Lacus vestibulum sed arcu non odio euismod lacinia. Ancidunt id aliquet risus.",
+        "price": {
+            "value": 11,
+            "currency": "PLN"
+        },
+        "images": [3,2,6],
+        "creationDate": "2020-05-01T12:30:00"
+    },
+    {
+        "id": 16,
+        "owner": {
+            "id": 3,
+            "name": "user1",
+            "type": "CUSTOMER",
+            "mail": "user1@mail.com"
+        },
+        "title": "Usługa nr 1",
+        "text": "Pellentesque diam volutpat commodo sed egestas. Lacus vestibulum sed arcu non odio euismod lacinia. Ancidunt id aliquet risus.",
+        "price": {
+            "value": 15,
+            "currency": "PLN"
+        },
+        "images": [8,4,6],
+        "creationDate": "2020-05-01T12:30:00"
+    },
+    {
+        "id": 17,
+        "owner": {
+            "id": 3,
+            "name": "user1",
+            "type": "CUSTOMER",
+            "mail": "user1@mail.com"
+        },
+        "title": "Usługa nr 2",
+        "text": "Pellentesque diam volutpat commodo sed egestas. Lacus vestibulum sed arcu non odio euismod lacinia. Ancidunt id aliquet risus.",
+        "price": {
+            "value": 17,
+            "currency": "PLN"
+        },
+        "images": [1,4,6],
+        "creationDate": "2020-05-01T12:30:00"
+    },
+    {
+        "id": 18,
+        "owner": {
+            "id": 3,
+            "name": "user1",
+            "type": "CUSTOMER",
+            "mail": "user1@mail.com"
+        },
+        "title": "Usługa nr 3",
+        "text": "Pellentesque diam volutpat commodo sed egestas. Lacus vestibulum sed arcu non odio euismod lacinia. Ancidunt id aliquet risus.",
+        "price": {
+            "value": 18,
+            "currency": "PLN"
+        },
+        "images": [2,4,6],
+        "creationDate": "2020-05-01T12:30:00"
+    },
+    {
+        "id": 19,
+        "owner": {
+            "id": 3,
+            "name": "user1",
+            "type": "CUSTOMER",
+            "mail": "user1@mail.com"
+        },
+        "title": "Usługa nr 4",
+        "text": "Pellentesque diam volutpat commodo sed egestas. Lacus vestibulum sed arcu non odio euismod lacinia. Ancidunt id aliquet risus.",
+        "price": {
+            "value": 19,
+            "currency": "PLN"
+        },
+        "images": [3,6,2],
+        "creationDate": "2020-05-01T12:30:00"
+    },
+    {
+        "id": 20,
+        "owner": {
+            "id": 3,
+            "name": "user1",
+            "type": "CUSTOMER",
+            "mail": "user1@mail.com"
+        },
+        "title": "Usługa nr 5",
+        "text": "Pellentesque diam volutpat commodo sed egestas. Lacus vestibulum sed arcu non odio euismod lacinia. Ancidunt id aliquet risus.",
+        "price": {
+            "value": 20,
+            "currency": "PLN"
+        },
+        "images": [4,2,1],
+        "creationDate": "2020-05-01T12:30:00"
+    }
+]

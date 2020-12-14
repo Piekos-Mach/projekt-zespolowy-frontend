@@ -1,5 +1,4 @@
 <template>
-<v-row justify="center">
 	<v-card elevation="24" width="700">
 
 		<v-card-title>LOGIN</v-card-title>
@@ -28,10 +27,9 @@
 			<v-btn>Login</v-btn>
 		</v-card-actions>
 		<router-link to="register">
-			<p><a>Don't have an account? Register here.</a></p>
+			<v-card-text>Don't have an account? Register here.</v-card-text>
 		</router-link>
 	</v-card>
-</v-row>
 </template>
 
 <script>

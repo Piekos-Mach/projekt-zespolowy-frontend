@@ -1,25 +1,26 @@
 <template>
     <v-card min-width="400">
-        <v-card-title v-if="this.$route">New Offer</v-card-title>
+        <v-card-title v-if="this.$route.path.includes('new')">New Offer</v-card-title>
+        <v-card-title v-else>Edit Offer</v-card-title>
 
         <v-card-text>
             <v-form v-model="valid">
                 <v-text-field
-                    v-model="title"
+                    v-model="offer.title"
                     :counter="20"
                     label="Title"
                     required
                 ></v-text-field>
 
                 <v-textarea
-                    v-model="text"
+                    v-model="offer.text"
                     :counter="200"
                     label="Description"
                     required
                 ></v-textarea>
 
                 <v-text-field
-                    v-model="price"
+                    v-model="offer.price"
                     type="number"
                     label="Price"
                     :rules="priceRules"
@@ -30,7 +31,9 @@
 
         <v-divider></v-divider>
 
-        <v-card-text><ImagesForm/></v-card-text>
+        <v-card-text>
+            <ImagesForm :images="this.images" @updateImgs="updateImgs"/>
+        </v-card-text>
 
         <v-card-actions>
             <v-btn>Submit</v-btn>
@@ -42,31 +45,19 @@
 
 <script>
 import ImagesForm from './ImagesForm'
+import offerForm from '@/mixins/offerForm'
 export default {
     name: 'OfferForm',
     components: { ImagesForm },
-    data() {
-        return {
-            valid: false,
-            title: '',
-            titleRules: [
-                v => !!v || 'Title is required!',
-                v => v.length <= 20 || 'Title must be shorter than 20 characters!'
-            ],
-            text: '',
-            textRules: [
-                v => !!v || 'Description is requred!',
-                v => v.length <= 200 || 'Description must be shorter than 200 characters!'
-            ],
-            price: 0,
-            priceRules: [
-                v => !!v || 'Price is required!',
-                v => !Number.isNaN(v) || 'Must be a number!',
-                v => v >= 0 || 'Price must not be a negative number!'
-            ],
-            currency: '',
+    mixins: [ offerForm ],
+    methods: {
+        updateImgs(e) {
+            this.newimages = [...e]
+            // BUG ?! length sie nie updatuje
+            // console.log(e.length)
+            // console.log(this.newimages)
+            // console.log(this.newimages.length)
         }
     }
-    
 }
 </script>

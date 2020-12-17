@@ -12,7 +12,7 @@ export default [
     {
         path: '/offer/edit/:id',
         name: 'offerform',
-        alias: '/offer/new/:id',
+        alias: '/offer/new',
         component: () => import('../components/offers/OfferForm.vue')
     }
 ]

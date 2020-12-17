@@ -13,7 +13,7 @@
 
         <v-row>
             <v-col
-                v-for="(img, index) in images" 
+                v-for="(img, index) in newimages" 
                 :key="index" 
                 class="d-flex child-flex"
                 cols="3"
@@ -40,28 +40,30 @@
 //HIGHLIGHT THHE FIRST PICTURE AS MAIN
 export default {
     name: 'ImagesForm',
+    props: ['images'],
     data() {
         return {
-            images: [],
+            newimages: [...this.images]
         }
     },
     methods: {
         loadImgsToUrl(ev) {
-
             // ADD PROGRESS
             // https://developer.mozilla.org/en-US/docs/Web/API/FileReader/progress_event
             let readFile = file => {
                 const reader = new FileReader()
                 reader.onload = e => {
-                    this.images.push(e.target.result)
+                    this.newimages.push(e.target.result)
                 }
                 reader.readAsDataURL(file)
             }
             readFile = readFile.bind(this)
             ev.forEach(v => readFile(v))
+            this.$emit('updateImgs', this.newimages)
         },
         deleteImg(index) {
-            this.images.splice(index, 1)
+            this.newimages.splice(index, 1)
+            this.$emit('updateImgs', this.newimages)
         }
     },
 }

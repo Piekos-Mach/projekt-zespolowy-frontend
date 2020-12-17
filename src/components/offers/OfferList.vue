@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { allOffers } from '@/mixins/offersMixins'
 import OfferMiniView from './OfferMiniView'
 
 export default {
@@ -21,8 +21,6 @@ export default {
     components: {
         OfferMiniView
     },
-    computed: {
-        ...mapState(['offers'])
-    }
+    mixins: [ allOffers ]
 }
 </script>

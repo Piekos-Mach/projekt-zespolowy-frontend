@@ -22,10 +22,10 @@
 </template>
 
 <script>
-import offerMixin from '@/mixins/offerMixin'
+import { offerWithImages } from '@/mixins/offersMixins'
 export default {
     name: 'OfferView',
-    mixins: [offerMixin],
+    mixins: [ offerWithImages ],
     data() {
         return {
             imgNo: 1

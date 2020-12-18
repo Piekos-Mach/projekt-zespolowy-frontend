@@ -20,7 +20,7 @@
                 ></v-textarea>
 
                 <v-text-field
-                    v-model="offer.price"
+                    v-model="offer.price.value"
                     type="number"
                     label="Price"
                     :rules="priceRules"
@@ -53,7 +53,8 @@ export default {
     methods: {
         updateImgs(e) {
             this.newimages = [...e]
-            // BUG ?! length sie nie updatuje
+            // BUG ?! length sie nie updatuje 
+            // sprawdzic czy dane beda odpowiednio zupdatowane
             // console.log(e.length)
             // console.log(this.newimages)
             // console.log(this.newimages.length)

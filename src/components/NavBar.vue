@@ -3,10 +3,10 @@
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="title">
-            Application
+            Navigation
           </v-list-item-title>
           <v-list-item-subtitle>
-            subtext
+            Filters
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
@@ -38,8 +38,8 @@
 export default {
     data: () => ({
         items: [
-          { title: 'Dashboard', icon: 'mdi-view-dashboard' },
-          { title: 'Photos', icon: 'mdi-image' },
+          { title: 'Items', icon: 'mdi-view-dashboard' },
+          { title: 'Service', icon: 'mdi-image' },
           { title: 'About', icon: 'mdi-help-box' },
         ]
     })

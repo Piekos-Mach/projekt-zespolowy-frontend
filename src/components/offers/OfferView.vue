@@ -17,7 +17,7 @@
             </v-row>
         </v-card-text>
         <v-card-text>{{this.offer.text}}</v-card-text>
-        <v-card-text>{{this.offer}}</v-card-text>
+        <v-card-text>{{this.offer.owner}}</v-card-text>
     </v-card>
 </template>
 

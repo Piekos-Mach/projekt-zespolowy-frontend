@@ -15,7 +15,16 @@ export default new Vuex.Store({
   },
   getters: {
     getOfferById: state => id => {
-      return state.offers.find(offer => id == offer.id)
+      let temp = state.offers.find(offer => id == offer.id) 
+      return  temp ? temp : {
+        title: '',
+        text: '',
+        price: {
+          value: 0,
+          currency: 'PLN'
+        },
+        images: []
+      }
     },
     getImgById: state => id => {
       return state.images.filter(img => img.id == id)[0].content

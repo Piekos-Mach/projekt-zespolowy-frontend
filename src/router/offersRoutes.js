@@ -10,9 +10,13 @@ export default [
         component: () => import('../components/offers/OfferView.vue'),
     },
     {
+        path: '/offer/new',
+        name: 'newoffer',
+        component: () => import('../components/offers/OfferForm.vue')
+    },
+    {
         path: '/offer/edit/:id',
         name: 'offerform',
-        alias: '/offer/new',
         component: () => import('../components/offers/OfferForm.vue')
     }
 ]

@@ -1,4 +1,7 @@
 import { mapGetters, mapState } from 'vuex'
+import axios from 'axios'
+
+const apiURL = 'https://localhost:2056/api'
 
 export {
     offerWithImages,
@@ -6,15 +9,27 @@ export {
     allOffers
 }
 
+// const offerWithImages = {
+//     computed: {
+//         ...mapGetters(['getOfferById', 'getImgById']),
+//         offer() {
+//             let temp = this.getOfferById(this.$route.params.id)
+//             return temp ? temp : undefined
+//         },
+//         images() {
+//             return this.offer.images.map(img => this.getImgById(img))
+//         }
+//     }
+// }
+
 const offerWithImages = {
     computed: {
-        ...mapGetters(['getOfferById', 'getImgById']),
         offer() {
-            let temp = this.getOfferById(this.$route.params.id)
-            return temp ? temp : undefined
-        },
-        images() {
-            return this.offer.images.map(img => this.getImgById(img))
+            axios.get(apiURL+'/offers/rv', {
+                params: {
+                    id: this.$route.params.id
+                }
+            })
         }
     }
 }

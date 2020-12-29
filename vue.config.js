@@ -4,6 +4,6 @@ module.exports = {
   ],
   "devServer": {
     "disableHostCheck": true,
-
+    "proxy": 'http://backend.test/'
   }
 }

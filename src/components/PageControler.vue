@@ -1,26 +1,29 @@
 <template>
-    <div>
-        <v-pagination 
-            v-if="totalPages > 0" 
-            v-model="page" 
-            :length="totalPages"
-            @input="changePage"
-        />
-        <v-chip-group v-model="size" @change="changePage">
-            <v-chip 
-                v-for="size in sizes" 
-                :key="size"
-            >
-                {{size}}
-            </v-chip>
-        </v-chip-group>
-    </div>
+  <div>
+    <v-pagination 
+      v-if="totalPages > 0" 
+      v-model="page" 
+      :length="totalPages"
+      @input="changePage"
+    />
+    <v-chip-group
+      v-model="size"
+      @change="changePage"
+    >
+      <v-chip 
+        v-for="s in sizes" 
+        :key="s"
+      >
+        {{ size }}
+      </v-chip>
+    </v-chip-group>
+  </div>
 </template>
 
 <script>
 export default {
     name: 'PageControler',
-    props: ['totalPages'],
+    props: { totalPages: Number },
     data() {
         return {
             page: 1,

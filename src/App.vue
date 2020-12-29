@@ -1,12 +1,12 @@
 <template>
   <v-app>
-    <NavBar/>
-    <AppBar/>
+    <NavBar />
+    <AppBar />
 
     <v-main>
       <v-container>
         <v-row justify="center">
-          <router-view></router-view>
+          <router-view />
         </v-row>
       </v-container>
     </v-main>

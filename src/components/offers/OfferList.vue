@@ -1,17 +1,23 @@
 <template>
-    <v-list>
-        <v-subheader>
-            <PageControler :totalPages="totalPages" @changePage="function(event){console.log(event);this.size = event.target.size; this.page = event.target.page; getOffersPage()}"/>
-        </v-subheader>
-        <v-list-item
-            v-for="(item, i) in offers"
-            :key="i"
-        >
-            <router-link tag="div" :to="'/offer/view/'+item.id">
-                <OfferMiniView :offer="item"/>
-            </router-link>
-        </v-list-item>
-    </v-list>
+  <v-list>
+    <v-subheader>
+      <PageControler
+        :total-pages="totalPages"
+        @changePage="function(event){console.log(event);this.size = event.target.size; this.page = event.target.page; getOffersPage()}"
+      />
+    </v-subheader>
+    <v-list-item
+      v-for="(item, i) in offers"
+      :key="i"
+    >
+      <router-link
+        tag="div"
+        :to="'/offer/view/'+item.id"
+      >
+        <OfferMiniView :offer="item" />
+      </router-link>
+    </v-list-item>
+  </v-list>
 </template>
 
 <script>

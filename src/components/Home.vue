@@ -12,12 +12,6 @@
       <v-list-item>
         token and user data persist in sessionstorage
       </v-list-item>
-      <v-list-item> 
-        unify form validation in mixins 
-      </v-list-item>
-      <v-list-item>
-        add user form
-      </v-list-item>
       <v-list-item>
         fix images in offer form and offer view
       </v-list-item>

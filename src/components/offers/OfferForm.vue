@@ -11,14 +11,14 @@
       <v-form v-model="valid" v-if="offer">
         <v-text-field
           v-model="offer.title"
-          :counter="20"
+          :rules="titleRules"
           label="Title"
           required
         />
 
         <v-textarea
           v-model="offer.text"
-          :counter="200"
+          :rules="textRules"
           label="Description"
           required
         />
@@ -44,7 +44,7 @@
 
     <v-card-actions>
       <v-btn @click="submit">Submit</v-btn>
-      <v-btn @click="clear">Clear</v-btn>
+      <v-btn @click="clear" class="mr-2">Clear</v-btn>
       <Confirm button="Delete" text="Are you sure you want to delete this offer" :func="deleteOffer"/>
       <v-btn @click="() => $router.back()">
         Cancel
@@ -56,11 +56,27 @@
 <script>
 import ImagesForm from './ImagesForm'
 import Confirm from '@/components/Confirm'
-import offerForm from '@/mixins/offerForm'
+import forms from '@/mixins/forms'
+import OfferApi from '@/mixins/OfferApi'
 export default {
     name: 'OfferForm',
     components: { ImagesForm, Confirm },
-    mixins: [ offerForm ],
+    mixins: [ forms ],
+    data() {
+      return {
+        newimages: [],
+        offer: undefined
+      }
+    },
+    mounted() {
+      let req
+      if(this.$route.params.id) {
+        req = OfferApi.getOfferBuf({id: this.$route.params.id})
+      } else {
+        req = OfferApi.getOfferBcf()
+      }
+      req.then(res => this.offer = res.data)
+    },
     methods: {
         updateImgs(e) {
             this.newimages = [...e]
@@ -69,6 +85,23 @@ export default {
             // console.log(e.length)
             // console.log(this.newimages)
             // console.log(this.newimages.length)
+        },
+        submit() {
+          const newOffer = {...this.offer, images: this.newimages}
+          let req
+          if(this.$route.params.id) {
+            req = OfferApi.updateOffer(newOffer)
+          } else {
+            req = OfferApi.createOffer(newOffer)
+          }
+          req.then( () => this.$router.back() )
+        },
+        clear() {
+          OfferApi.getOfferBcf().then(res => this.offer = res.data)
+        },
+        deleteOffer() {
+          OfferApi.deleteOffer({id: this.$route.params.id})
+            .then( () => this.$router.back() )
         }
     }
 }

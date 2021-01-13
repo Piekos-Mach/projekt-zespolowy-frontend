@@ -23,8 +23,7 @@ function deleteUser(params) {
 }
 
 function createUser(params) {
-    console.log(params)
-    return backendAPI.post(baseUrl, params)
+    return backendAPI.post('/signup', params)
 }
 
 function updateUser(params) {

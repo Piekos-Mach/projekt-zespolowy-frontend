@@ -22,9 +22,11 @@
 
     <v-spacer />
 
-    <v-btn text>
-      <span class="mr-2">{{!user ? 'Guest' : user.name}}</span>
-    </v-btn>
+    <router-link :to="!user ? '/register' : `/users/view/${user.id}`">
+      <v-btn text>
+        <span class="mr-2">{{!user ? 'Guest' : user.name}}</span>
+      </v-btn>
+    </router-link>
 
     <router-link
       to="/login"

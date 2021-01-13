@@ -34,14 +34,15 @@ import OfferMiniView from './OfferMiniView'
 import SearchBar from './SearchBar'
 import OfferApi from '@/mixins/OfferApi'
 export default {
-    name: 'OffersList',
+    name: 'OfferList',
     components: { OfferMiniView, SearchBar },
+    props: ['ownerId'],
     data() {
         return {
             offers: [],
             sizes: [5, 10, 15, 25, 50, 100],
             totalPages: 0,
-            pageSize: 5, 
+            pageSize: 0, 
             page: 1,
             searchQuery: {}
         }
@@ -55,6 +56,7 @@ export default {
     },
     methods: {
       getOffers() {
+        if(this.ownerId) this.searchQuery.owner = this.ownerId
         OfferApi.getOfferPage(this.page, this.sizes[this.pageSize], this.searchQuery)
           .then(res => {
             this.offers = res.data.content,

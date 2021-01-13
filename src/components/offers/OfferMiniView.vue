@@ -24,7 +24,7 @@
             color="warning lighten-2"
             size="41"
           >
-            {{ initials }}
+            {{ initials(offer.owner.name) }}
           </v-avatar>
         </v-card-text>
       </v-col>
@@ -33,13 +33,10 @@
 </template>
 
 <script>
+import initials from '@/mixins/initials'
 export default {
     name: 'OfferMiniView',
+    mixins: [initials],
     props: { offer: Object },
-    computed: {
-        initials() {
-            return this.offer.owner.name.split(' ').reduce((prev, cur) => prev + cur.charAt(0).toUpperCase(), '')
-        }
-    }
 }
 </script>

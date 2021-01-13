@@ -52,7 +52,7 @@ export default {
     ...mapMutations({userout: 'logout'}),
     logout() {
       this.userout()
-      this.$router.push('/')
+      if(this.$route.path != '/') this.$router.push('/')
     }
   }
 }

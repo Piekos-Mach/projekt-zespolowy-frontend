@@ -10,9 +10,6 @@
       </v-subheader>
       
       <v-list-item>
-        token and user data persist in sessionstorage
-      </v-list-item>
-      <v-list-item>
         fix images in offer form and offer view
       </v-list-item>
       <v-list-item>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-row>
     <SearchBar>
       <v-card flat>
         <v-card-subtitle>Page Size</v-card-subtitle>
@@ -11,7 +11,7 @@
       </v-card>
     </SearchBar>
 
-    <v-pagination :length="totalPages" v-model="page" @input="getOffers"/>
+    <v-pagination v-if="totalPages > 0" :length="totalPages" v-model="page" @input="getOffers"/>
 
     <v-list>
       <v-list-item
@@ -26,7 +26,7 @@
         </router-link>
       </v-list-item>
     </v-list>
-  </div>
+  </v-row>
 </template>
 
 <script>

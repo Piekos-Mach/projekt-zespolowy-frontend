@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-// import initPlugin from './initPlugin'
+import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
 
@@ -16,13 +16,8 @@ export default new Vuex.Store({
     getUser: state => state.user
   },
   mutations: {
-    setJWToken: (state, token) => {
-      state.isGuest = !token ? false : true 
-      state.JWToken = token
-    },
-    setUser: (state, user) => {
-      state.user = user
-    },
+    setJWToken: (state, token) => state.JWToken = token,
+    setUser: (state, user) => state.user = user,
     logout: state => {
       state.user = undefined
       state.JWToken = undefined
@@ -32,5 +27,7 @@ export default new Vuex.Store({
   },
   modules: {
   },
-  // plugins: [initPlugin]
+  plugins: [
+    createPersistedState({ storage: sessionStorage})
+  ]
 })

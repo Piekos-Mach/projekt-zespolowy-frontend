@@ -12,7 +12,7 @@
     </router-link>
 
     <router-link
-      v-if="this.$route.path.includes('offers')"
+      v-if="user"
       to="/offer/new"
     >
       <v-btn text>
@@ -22,28 +22,36 @@
 
     <v-spacer />
 
-    <v-btn
-      text
-      disabled
-      v-if="isGuest"
-    >
-      <span class="mr-2 text--disabled">Guest</span>
+    <v-btn text>
+      <span class="mr-2">{{!user ? 'Guest' : user.name}}</span>
     </v-btn>
+
     <router-link
-      to="login"
-      v-if="isGuest"
+      to="/login"
+      v-if="!user"
     >
       <v-btn text>
         <span class="mr-2">Login</span>
       </v-btn>
     </router-link>
+
+    <v-btn text v-else @click="logout">
+      <span class="mr-2">Logout</span>
+    </v-btn>
   </v-app-bar>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapMutations, mapState } from 'vuex'
 export default {
 	name: 'AppBar',
-	computed: mapState(['isGuest']),
+  computed: mapState(['user']),
+  methods: {
+    ...mapMutations({userout: 'logout'}),
+    logout() {
+      this.userout()
+      this.$router.push('/')
+    }
+  }
 }
 </script>

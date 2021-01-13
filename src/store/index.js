@@ -4,34 +4,29 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-import offers from '../mock/offers.json'
-import images from '../mock/images.json'
-
 export default new Vuex.Store({
   state: {
-    isGuest: true,
-    offers: offers,
-    images: images
+    JWToken: undefined,
+    user: undefined
   },
   getters: {
-    getOfferById: state => id => {
-      let temp = state.offers.find(offer => id == offer.id) 
-      return  temp ? temp : {
-        title: '',
-        text: '',
-        price: {
-          value: 0,
-          currency: 'PLN'
-        },
-        images: []
-      }
+    getJWToken: state => {
+      return state.JWToken
     },
-    getImgById: state => id => {
-      return state.images.filter(img => img.id == id)[0].content
-    }
+    getUser: state => state.user
   },
   mutations: {
-    
+    setJWToken: (state, token) => {
+      state.isGuest = !token ? false : true 
+      state.JWToken = token
+    },
+    setUser: (state, user) => {
+      state.user = user
+    },
+    logout: state => {
+      state.user = undefined
+      state.JWToken = undefined
+    }
   },
   actions: {
   },

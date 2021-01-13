@@ -1,6 +1,5 @@
 <template>
   <v-app>
-    <NavBar />
     <AppBar />
 
     <v-main>
@@ -14,12 +13,10 @@
 </template>
 
 <script>
-import NavBar from './components/NavBar'
 import AppBar from './components/AppBar'
 export default {
   name: 'App',
   components: {
-    NavBar,
     AppBar
   },
   data: () => ({

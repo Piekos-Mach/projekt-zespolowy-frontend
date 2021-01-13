@@ -1,61 +1,70 @@
 <template>
-  <v-list>
-    <v-subheader>
-      <PageControler
-        :total-pages="totalPages"
-        @changePage="function(event){console.log(event);this.size = event.target.size; this.page = event.target.page; getOffersPage()}"
-      />
-    </v-subheader>
-    <v-list-item
-      v-for="(item, i) in offers"
-      :key="i"
-    >
-      <router-link
-        tag="div"
-        :to="'/offer/view/'+item.id"
+  <div>
+    <SearchBar>
+      <v-card flat>
+        <v-card-subtitle>Page Size</v-card-subtitle>
+        <v-card-text>
+          <v-chip-group column mandatory v-model="pageSize" active-class="warning" @change="getOffers">
+            <v-chip filter v-for="size in sizes" :key="size">{{size}}</v-chip>
+          </v-chip-group>
+        </v-card-text>
+      </v-card>
+    </SearchBar>
+
+    <v-pagination :length="totalPages" v-model="page" @input="getOffers"/>
+
+    <v-list>
+      <v-list-item
+        v-for="(item, i) in offers"
+        :key="i"
       >
-        <OfferMiniView :offer="item" />
-      </router-link>
-    </v-list-item>
-  </v-list>
+        <router-link
+          tag="div"
+          :to="'/offer/view/'+item.id"
+        >
+          <OfferMiniView :offer="item" />
+        </router-link>
+      </v-list-item>
+    </v-list>
+  </div>
 </template>
 
 <script>
 import OfferMiniView from './OfferMiniView'
-import PageControler from '@/components/PageControler'
-import axios from 'axios'
+import SearchBar from './SearchBar'
+import OfferApi from '@/mixins/OfferApi'
 export default {
     name: 'OffersList',
-    components: {
-        OfferMiniView,
-        PageControler
-    },
-    mounted() {
-        this.getOffersPage({})
-    },
+    components: { OfferMiniView, SearchBar },
     data() {
         return {
             offers: [],
+            sizes: [5, 10, 15, 25, 50, 100],
             totalPages: 0,
+            pageSize: 5, 
+            page: 1,
+            searchQuery: {}
         }
     },
+    mounted() { this.getOffers() },
+    watch: {
+      $route(to) {
+        this.searchQuery = to.query
+        this.getOffers()
+      }
+    },
     methods: {
-        async getOffersPage(){
-            const url = 'http://localhost:2056/api/offers/rpv'
-            this.offers = []
-            axios.get(url, { 
-                params: {
-                    size: this.size,
-                    page: this.page
-                } 
-            })
-                .then(res => res.data)
-                .then(data => {
-                    this.totalPages = data.totalPages
-                    this.offers = data.content
-                    console.log(data)
-                })
-        }
+      getOffers() {
+        OfferApi.getOfferPage(this.page, this.sizes[this.pageSize], this.searchQuery)
+          .then(res => {
+            this.offers = res.data.content,
+            this.totalPages = res.data.totalPages
+            if(this.page > this.totalPages) {
+              this.page = this.totalPages
+              this.getOffers()
+            }
+          })
+      }
     }
 }
 </script>

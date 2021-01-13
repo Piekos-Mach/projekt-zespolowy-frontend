@@ -1,11 +1,7 @@
 <template>
   <div class="home">
-    <img
-      alt="Vue logo"
-      src="../assets/logo.png"
-    >
     <router-link to="/offers">
-      <v-btn>Offers</v-btn>
+      <v-btn>Go to Offers</v-btn>
     </router-link>
   </div>
 </template>

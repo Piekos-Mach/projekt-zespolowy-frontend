@@ -1,6 +1,6 @@
 <template>
   <v-card min-width="400">
-    <v-card-title v-if="this.$route.path.includes('new')">
+    <v-card-title v-if="$route.path.includes('new')">
       New Offer
     </v-card-title>
     <v-card-title v-else>
@@ -8,7 +8,7 @@
     </v-card-title>
 
     <v-card-text>
-      <v-form v-model="valid">
+      <v-form v-model="valid" v-if="offer">
         <v-text-field
           v-model="offer.title"
           :counter="20"
@@ -36,16 +36,17 @@
     <v-divider />
 
     <v-card-text>
-      <ImagesForm
-        :images="this.images"
+      <ImagesForm v-if="offer"
+        :images="offer.images"
         @updateImgs="updateImgs"
       />
     </v-card-text>
 
     <v-card-actions>
-      <v-btn>Submit</v-btn>
-      <v-btn>Clear</v-btn>
-      <v-btn @click="() => this.$router.back()">
+      <v-btn @click="submit">Submit</v-btn>
+      <v-btn @click="clear">Clear</v-btn>
+      <Confirm button="Delete" text="Are you sure you want to delete this offer" :func="deleteOffer"/>
+      <v-btn @click="() => $router.back()">
         Cancel
       </v-btn>
     </v-card-actions>
@@ -54,10 +55,11 @@
 
 <script>
 import ImagesForm from './ImagesForm'
+import Confirm from '@/components/Confirm'
 import offerForm from '@/mixins/offerForm'
 export default {
     name: 'OfferForm',
-    components: { ImagesForm },
+    components: { ImagesForm, Confirm },
     mixins: [ offerForm ],
     methods: {
         updateImgs(e) {

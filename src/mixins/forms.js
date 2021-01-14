@@ -10,7 +10,7 @@ export default {
             ],
             textRules: [
                 v => !!v || 'Description is requred!',
-                v => v.length <= 200 || 'Description must be shorter than 200 characters!'
+                v => v.length <= 2000 || 'Description must be shorter than 200 characters!'
             ],
             priceRules: [
                 v => !!v || 'Price is required!',

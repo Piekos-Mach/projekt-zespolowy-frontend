@@ -98,10 +98,10 @@ export default {
     },
     watch: {
         firstname(val) {
-            this.user.name = val + ' ' + this.lastname
+            this.user.name = (val + ' ' + this.lastname).trim()
         },
         lastname(val) {
-            this.user.name = this.firstname + ' ' + val
+            this.user.name = (this.firstname + ' ' + val).trim()
         }
     },
     methods: {
@@ -117,7 +117,10 @@ export default {
                     .catch(err => alert(err))
             } else {
                 UserApi.updateUser(this.user)
-                    .then( () => this.$router.back() )
+                    .then( () => {
+                        this.$store.commit('logout')
+                        this.$router.push('/login')
+                    })
                     .catch(err => alert(err))
             }
         },

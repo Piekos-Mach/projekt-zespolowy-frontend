@@ -36,7 +36,7 @@
     <v-divider />
 
     <v-card-text>
-      <ImagesForm v-if="offer"
+      <ImagesForm v-if="offer.images"
         :images="offer.images"
         @updateImgs="updateImgs"
       />
@@ -46,9 +46,7 @@
       <v-btn @click="submit">Submit</v-btn>
       <v-btn @click="clear" class="mr-2">Clear</v-btn>
       <Confirm button="Delete" text="Are you sure you want to delete this offer" :func="deleteOffer"/>
-      <v-btn @click="() => $router.back()">
-        Cancel
-      </v-btn>
+      <v-btn @click="() => $router.back()">Cancel</v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -59,50 +57,57 @@ import Confirm from '@/components/Confirm'
 import forms from '@/mixins/forms'
 import OfferApi from '@/mixins/OfferApi'
 export default {
-    name: 'OfferForm',
-    components: { ImagesForm, Confirm },
-    mixins: [ forms ],
-    data() {
-      return {
-        newimages: [],
-        offer: undefined
-      }
+  name: 'OfferForm',
+  components: { ImagesForm, Confirm },
+  mixins: [ forms ],
+  data() {
+    return {
+      newimages: [],
+      offer: undefined
+    }
+  },
+  mounted() {
+    let req
+    if(this.$route.params.id) {
+      req = OfferApi.getOfferBuf({id: this.$route.params.id})
+    } else {
+      req = OfferApi.getOfferBcf()
+    }
+    req.then(res => {
+      this.offer = res.data
+      this.offer.images = this.offer.images.map(img => img.content)
+      this.offer.price.currency = 1
+    })
+  },
+  methods: {
+    updateImgs(e) {
+      this.newimages = [...e]
+      // BUG ?! length sie nie updatuje 
+      // sprawdzic czy dane beda odpowiednio zupdatowane
+      // console.log(e.length)
+      // console.log(this.newimages)
+      // console.log(this.newimages.length)
     },
-    mounted() {
+    submit() {
+      const newOffer = {
+        ...this.offer, 
+        images: this.newimages.length > 0 ? this.newimages : this.offer.images,
+      }
       let req
       if(this.$route.params.id) {
-        req = OfferApi.getOfferBuf({id: this.$route.params.id})
+        req = OfferApi.updateOffer(newOffer)
       } else {
-        req = OfferApi.getOfferBcf()
+        req = OfferApi.createOffer(newOffer)
       }
-      req.then(res => this.offer = res.data)
+      req.then( () => this.$router.back() )
     },
-    methods: {
-        updateImgs(e) {
-            this.newimages = [...e]
-            // BUG ?! length sie nie updatuje 
-            // sprawdzic czy dane beda odpowiednio zupdatowane
-            // console.log(e.length)
-            // console.log(this.newimages)
-            // console.log(this.newimages.length)
-        },
-        submit() {
-          const newOffer = {...this.offer, images: this.newimages}
-          let req
-          if(this.$route.params.id) {
-            req = OfferApi.updateOffer(newOffer)
-          } else {
-            req = OfferApi.createOffer(newOffer)
-          }
-          req.then( () => this.$router.back() )
-        },
-        clear() {
-          OfferApi.getOfferBcf().then(res => this.offer = res.data)
-        },
-        deleteOffer() {
-          OfferApi.deleteOffer({id: this.$route.params.id})
-            .then( () => this.$router.back() )
-        }
+    clear() {
+      OfferApi.getOfferBcf().then(res => this.offer = res.data)
+    },
+    deleteOffer() {
+      OfferApi.deleteOffer({id: this.$route.params.id})
+        .then( () => this.$router.back() )
     }
+  }
 }
 </script>

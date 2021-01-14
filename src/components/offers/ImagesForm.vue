@@ -43,32 +43,32 @@
 //ADD DRAGABLE TO ADD IMAGES AND CHANGE ORDER
 //HIGHLIGHT THHE FIRST PICTURE AS MAIN
 export default {
-    name: 'ImagesForm',
-    props: { images: Array },
-    data() {
-        return {
-            newimages: [...this.images]
+  name: 'ImagesForm',
+  props: { images: Array },
+  data() {
+    return {
+      newimages: [...this.images]
+    }
+  },
+  methods: {
+    loadImgsToUrl(ev) {
+      // ADD PROGRESS
+      // https://developer.mozilla.org/en-US/docs/Web/API/FileReader/progress_event
+      let readFile = file => {
+        const reader = new FileReader()
+        reader.onload = e => {
+          this.newimages.push(e.target.result)
+          this.$emit('updateImgs', this.newimages)
         }
+        reader.readAsDataURL(file)
+      }
+      readFile = readFile.bind(this)
+      ev.forEach(v => readFile(v))
     },
-    methods: {
-        loadImgsToUrl(ev) {
-            // ADD PROGRESS
-            // https://developer.mozilla.org/en-US/docs/Web/API/FileReader/progress_event
-            let readFile = file => {
-                const reader = new FileReader()
-                reader.onload = e => {
-                    this.newimages.push(e.target.result)
-                }
-                reader.readAsDataURL(file)
-            }
-            readFile = readFile.bind(this)
-            ev.forEach(v => readFile(v))
-            this.$emit('updateImgs', this.newimages)
-        },
-        deleteImg(index) {
-            this.newimages.splice(index, 1)
-            this.$emit('updateImgs', this.newimages)
-        }
-    },
+    deleteImg(index) {
+        this.newimages = this.newimages.splice(index, 1)
+        this.$emit('updateImgs', this.newimages)
+    }
+  },
 }
 </script>

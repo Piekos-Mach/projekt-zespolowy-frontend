@@ -1,4 +1,5 @@
 import backendAPI from './backendAPI'
+import store from '../store'
 
 const baseUrl = '/offers'
 
@@ -28,26 +29,42 @@ async function getOfferPage(page, size, query) {
     })
 }
 
+async function getOfferViewL(params) {
+    return backendAPI.get(baseUrl + '/rvl', {
+        params: params
+    })
+}
+
+async function getOfferLazyPage(page, size, query) {
+    return backendAPI.get(baseUrl + '/rpvl', {
+        params: {
+            page: page,
+            size: size,
+            ...query
+        }
+    })
+}
+
 async function deleteOffer(params) {
     return backendAPI.post(baseUrl + '/d', params)
 }
 
 async function createOffer(params) {
-    console.log(params)
-    return backendAPI.post(baseUrl, {...params, owner: 1})
+    return backendAPI.post(baseUrl, {...params, owner: store.state.user.id})
 }
 
  function updateOffer(params) {
-     console.log(params)
-    return backendAPI.put(baseUrl, params)
+    return backendAPI.put(baseUrl, {...params})
 }
 
 export default {
+    getOfferLazyPage,
     getOfferBcf,
     getOfferBuf,
     getOfferPage,
     getOfferView,
     deleteOffer,
     createOffer,
+    getOfferViewL,
     updateOffer
 }

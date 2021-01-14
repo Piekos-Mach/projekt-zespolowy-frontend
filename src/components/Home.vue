@@ -10,19 +10,16 @@
       </v-subheader>
       
       <v-list-item>
-        fix images in offer form and offer view
-      </v-list-item>
-      <v-list-item>
         implement lazy and skeleton loader 
       </v-list-item>
       <v-list-item>
-        beutify offer view 
-      </v-list-item>
-      <v-list-item>
-        router security 
-      </v-list-item>
-      <v-list-item>
         add smth on home page 
+      </v-list-item>
+      <v-list-item>
+        add dialog in offer view after clicking on image
+      </v-list-item>
+      <v-list-item>
+        types in offer form
       </v-list-item>
     </v-list>
   </div>

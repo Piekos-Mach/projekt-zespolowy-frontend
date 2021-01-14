@@ -57,7 +57,7 @@ export default {
     methods: {
       getOffers() {
         if(this.ownerId) this.searchQuery.owner = this.ownerId
-        OfferApi.getOfferPage(this.page, this.sizes[this.pageSize], this.searchQuery)
+        OfferApi.getOfferLazyPage(this.page, this.sizes[this.pageSize], this.searchQuery)
           .then(res => {
             this.offers = res.data.content,
             this.totalPages = res.data.totalPages

@@ -10,9 +10,6 @@
       </v-subheader>
       
       <v-list-item>
-        implement lazy and skeleton loader 
-      </v-list-item>
-      <v-list-item>
         add smth on home page 
       </v-list-item>
       <v-list-item>

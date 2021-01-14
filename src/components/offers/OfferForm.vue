@@ -1,5 +1,5 @@
 <template>
-  <v-card min-width="400">
+  <v-card min-width="400" v-if="offer">
     <v-card-title v-if="$route.path.includes('new')">
       New Offer
     </v-card-title>

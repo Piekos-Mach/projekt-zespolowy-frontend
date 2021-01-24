@@ -36,6 +36,7 @@
     <v-divider />
 
     <v-card-text>
+      Images:
       <ImagesForm v-if="offer.images"
         :images="offer.images"
         @updateImgs="updateImgs"
@@ -82,11 +83,6 @@ export default {
   methods: {
     updateImgs(e) {
       this.newimages = [...e]
-      // BUG ?! length sie nie updatuje 
-      // sprawdzic czy dane beda odpowiednio zupdatowane
-      // console.log(e.length)
-      // console.log(this.newimages)
-      // console.log(this.newimages.length)
     },
     submit() {
       const newOffer = {

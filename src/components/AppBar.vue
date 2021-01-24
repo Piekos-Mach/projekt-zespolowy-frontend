@@ -11,14 +11,15 @@
       </v-btn>
     </router-link>
 
-    <router-link
-      v-if="user"
-      to="/offer/new"
-    >
-      <v-btn text>
-        <span class="mr-2">New Offer</span>
-      </v-btn>
-    </router-link>
+    <v-btn text v-if="user" to="/offer/new">
+      <span class="mr-2">New Offer</span>
+    </v-btn>
+
+    <v-spacer />
+    
+    <v-text-field class="mb-0 mt-4" v-model="searchbar" @change="offerSearch" append-icon="mdi-magnify" single-line>
+      
+    </v-text-field>
 
     <v-spacer />
 
@@ -46,13 +47,27 @@
 <script>
 import { mapMutations, mapState } from 'vuex'
 export default {
-	name: 'AppBar',
+  name: 'AppBar',
+  data() {
+    return {
+      searchbar: ''
+    }
+  },
   computed: mapState(['user']),
   methods: {
     ...mapMutations({userout: 'logout'}),
     logout() {
       this.userout()
       if(this.$route.path != '/') this.$router.push('/')
+    },
+    offerSearch(e) {
+
+        if(this.$route.path.includes('offers')) {
+          this.$router.replace({query: {title: e}})
+        } else {
+          this.$router.push({path: '/offers', query: {title: e}})
+        }
+
     }
   }
 }

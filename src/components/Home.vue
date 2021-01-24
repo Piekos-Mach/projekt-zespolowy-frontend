@@ -16,7 +16,7 @@
         add dialog in offer view after clicking on image
       </v-list-item>
       <v-list-item>
-        types in offer form
+        finish filters and fix image form
       </v-list-item>
     </v-list>
   </div>

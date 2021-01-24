@@ -11,7 +11,9 @@
       </v-card>
     </SearchBar>
 
-    <v-pagination v-if="totalPages > 0" :length="totalPages" v-model="page" @input="getOffers"/>
+    <v-toolbar floating v-if="totalPages > 0">
+      <v-pagination :length="totalPages" v-model="page" @input="getOffers"/>
+    </v-toolbar>
 
     <v-list>
       <v-list-item
@@ -47,17 +49,20 @@ export default {
             searchQuery: {}
         }
     },
-    mounted() { this.getOffers() },
+    mounted() { this.getOffers(); console.log(this.searchQuery) },
     watch: {
       $route(to) {
         this.searchQuery = to.query
+        console.log(to.query)
         this.getOffers()
       }
     },
     methods: {
       getOffers() {
-        if(this.ownerId) this.searchQuery.owner = this.ownerId
-        OfferApi.getOfferLazyPage(this.page, this.sizes[this.pageSize], this.searchQuery)
+        let query = {}
+        if(this.searchQuery.type) query.type = this.searchQuery.type
+        if(this.ownerId) query.owner = this.ownerId
+        OfferApi.getOfferLazyPage(this.page, this.sizes[this.pageSize], query)
           .then(res => {
             this.offers = res.data.content,
             this.totalPages = res.data.totalPages
@@ -65,7 +70,18 @@ export default {
               this.page = this.totalPages
               this.getOffers()
             }
+            this.filterOffers()
           })
+      },
+      filterOffers() {
+        this.offers = this.offers
+          .filter(offer => this.searchQuery.title    ? offer.title.includes(this.searchQuery.title)    : true)
+          .filter(offer => this.searchQuery.minPrice ? offer.price.value >= this.searchQuery.minPrice  : true)
+          .filter(offer => this.searchQuery.maxPrice ? offer.price.value <= this.searchQuery.maxPrice  : true)
+          .filter(offer => this.searchQuery.dateFrom ? offer.creationDate >= this.searchQuery.dateFrom : true)
+          .filter(offer => this.searchQuery.dateTo   ? offer.creationDate <= this.searchQuery.dateTo   : true)
+        // this.totalPages = Math.floor(this.offers.length / this.sizes[this.pageSize])
+        console.log(this.totalPages)
       }
     }
 }

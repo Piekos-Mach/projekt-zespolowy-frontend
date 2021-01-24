@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <div>
     <v-row justify="center">
       <v-col cols="12">
         <v-file-input
@@ -22,6 +22,8 @@
           :src="img"
           class="grey lighten-2"
           contain
+          width="300"
+          height="300"
         >
           <v-btn
             dark
@@ -36,12 +38,10 @@
         </v-img>
       </v-col>
     </v-row>
-  </v-container>
+  </div>
 </template>
 
 <script>
-//ADD DRAGABLE TO ADD IMAGES AND CHANGE ORDER
-//HIGHLIGHT THHE FIRST PICTURE AS MAIN
 export default {
   name: 'ImagesForm',
   props: { images: Array },
@@ -66,7 +66,7 @@ export default {
       ev.forEach(v => readFile(v))
     },
     deleteImg(index) {
-        this.newimages = this.newimages.splice(index, 1)
+        this.newimages.splice(index, 1)
         this.$emit('updateImgs', this.newimages)
     }
   },

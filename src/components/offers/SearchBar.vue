@@ -30,11 +30,11 @@
           <v-card-text>
             <v-row align="center">
               <v-col cols="5">
-                <v-text-field type="number" v-model="minprice" label="Min"></v-text-field>
+                <v-text-field @change="newQuery" type="number" v-model="minprice" label="Min"></v-text-field>
               </v-col>
               <v-col cols="2"><v-divider/></v-col>
               <v-col cols="5">
-                <v-text-field type="number" v-model="maxprice" label="Max"></v-text-field>
+                <v-text-field @change="newQuery" type="number" v-model="maxprice" label="Max"></v-text-field>
               </v-col>
             </v-row>
           </v-card-text>
@@ -45,8 +45,8 @@
         <v-card flat>
           <v-card-subtitle>Creation Date</v-card-subtitle>
           <v-card-text>
-            <DialogDatePicker v-model="mindate" placeholder="From"/>
-            <DialogDatePicker v-model="maxdate" placeholder="To"/>
+            <DialogDatePicker @input="newQuery" v-model="mindate" placeholder="From"/>
+            <DialogDatePicker @input="newQuery" v-model="maxdate" placeholder="To"/>
           </v-card-text>
         </v-card>
       </v-list-item>
@@ -70,8 +70,14 @@ export default {
   methods: {
     newQuery() {
       let query = {}
-      console.log(this.type)
       if(this.type != 0) query.type = this.type
+      if(this.minprice != 0) query.minPrice = this.minprice
+      if(this.maxprice != 10000) query.maxPrice = this.maxprice
+      if(this.mindate > this.maxdate) this.mindate = this.maxdate
+      if(this.maxdate < this.mindate) this.maxdate = this.mindate
+      if(this.mindate) query.dateFrom = this.mindate
+      if(this.maxdate) query.dateTo = this.maxdate
+
       this.$router.push({query: query})
     }
   }

@@ -4,22 +4,23 @@
       <v-col cols="2">
         <v-card-text>
           <v-img
-            v-if="image"
-            max-width="100"
-            max-height="100"
-            :src="image"
+            width="100"
+            height="100"
+            :src="image || ''"
           />
         </v-card-text>
       </v-col>
-      <v-col>
+      <v-col cols="8">
         <v-card-title>{{ offer.title }}</v-card-title>
-        <v-card-text>{{ offer.text }}</v-card-text>
+        <v-card-subtitle>Created: {{ offer.creationDate.split("T")[0] }}</v-card-subtitle>
+        <v-card-text>{{ offer.text.substring(0,200) + (offer.text.length > 200 ? '...' : '')}}</v-card-text>
       </v-col>
-      <v-col cols="2">
+      <v-col cols="2" align-self="center">
         <v-card-text>
-          {{ offer.price.value }} {{ offer.price.currency.name }}
+          Price: {{ offer.price.value }} {{ offer.price.currency.name }}
         </v-card-text>
         <v-card-text>
+          <router-link :to="'/users/view/' + offer.owner.id" >
           <v-avatar
             rounded
             color="warning lighten-2"
@@ -27,6 +28,7 @@
           >
             {{ initials(offer.owner.name) }}
           </v-avatar>
+          </router-link>
         </v-card-text>
       </v-col>
     </v-row>

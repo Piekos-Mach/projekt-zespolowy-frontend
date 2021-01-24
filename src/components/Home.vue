@@ -1,24 +1,27 @@
 <template>
   <div class="home">
-    <router-link to="/offers">
-      <v-btn>Go to Offers</v-btn>
-    </router-link>
+    <v-row justify="center">
+      <v-card min-width="500">
+        <v-card-title>
+          <v-row justify="center">
+            Welcome in Bo-Rd Application
+          </v-row>
+        </v-card-title>
+        <v-divider/>
+        <v-card-text>
+          <v-row justify="center">
+            Here you can search for other users offers or create your own
+          </v-row>
 
-    <v-list elevation="2">
-      <v-subheader>
-    TODO:
-      </v-subheader>
-      
-      <v-list-item>
-        add smth on home page 
-      </v-list-item>
-      <v-list-item>
-        add dialog in offer view after clicking on image
-      </v-list-item>
-      <v-list-item>
-        finish filters and fix image form
-      </v-list-item>
-    </v-list>
+          <v-row justify="center">
+            <router-link to="/offers">
+              <v-btn text>Go to Offers</v-btn>
+            </router-link>
+          </v-row>
+        </v-card-text>
+      </v-card>
+
+    </v-row>
   </div>
 </template>
 
